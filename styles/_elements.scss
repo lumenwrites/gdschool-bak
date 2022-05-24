@@ -1,0 +1,21 @@
+.btn {
+  color: white;
+  padding: var(--size-4);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  &.-primary {
+    background: var(--orange-600);
+  }
+  &.-outline {
+    border: 1px solid var(--orange-600);
+  }
+}
+
+input, textarea {
+  border-width: 1px;
+  border-radius: 0px;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+}

@@ -1,0 +1,22 @@
+// Design tokens
+@import './1-design-tokens/_colors.scss';
+@import './1-design-tokens/_sizes.scss';
+@import './1-design-tokens/_text.scss';
+@import './1-design-tokens/_utilities.scss';
+
+// Generic
+@import './2-generic/_normalize.scss';
+@import './2-generic/_load-fonts.scss';
+
+// Globals
+@import './3-global/_themes.scss';
+@import './3-global/_base.scss'; // html, body, scrollbars, etc.
+@import './3-global/_typography.scss';
+
+// Small elements - buttons, inputs, etc. Reusable blocks - cards, dropdowns, modals, etc. 
+@import './_elements.scss';
+// For pieces of the layout, header, footer, section, container, etc.
+@import './_layout.scss'; 
+
+
+@import './_profiles.scss'; 

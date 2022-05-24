@@ -1,0 +1,103 @@
+:root {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+
+  --font-pirmary: var(--font-sans);
+  --font-secondary: var(--font-sans);
+
+  // Colors
+  --primary: #0d6efd;
+  --secondary: #6c757d;
+  --success: #198754;
+  --info: #0dcaf0;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --gradient: linear-gradient(45deg, #d31f4d, #fab41e);
+
+  // Fonts
+  --body-font-family: var(--font-sans);
+  // .text-base
+  --body-font-size: var(--font-scale-1);
+  --body-line-height: var(--font-lineheight-6);
+
+  // Font colors
+  --text-body: #374151;
+  --text-headings: #111827;
+  --text-links: #0d6efd;
+  --text-links-hover: #0a58ca;
+  --text-code: #111827;
+  --text-hr: #e5e7eb;
+
+  --text-secondary: var(--gray-7);
+  --text-button: var(--link);
+  --text-dim: var(--link);
+  --text-link: var(--indigo-7);
+  --text-link-visited: var(--grape-7);
+  --text-placeholder: var(--indigo-7);
+
+  --bg-main: white;
+  --surface-1: var(--gray-0);
+  --surface-2: var(--gray-2);
+  --surface-3: var(--gray-3);
+  --surface-4: var(--gray-4);
+
+  --scrollbar-color: var(--gray-7);
+  scrollbar-color: var(--scrollbar-color) transparent;
+  accent-color: var(--link);
+  caret-color: var(--link);
+}
+
+:root {
+  // Typography
+  --base-font-size: 14px;
+  --logo-font: 'Open Sans';
+
+  --text: #3c4257; // #582323; //#3c4257;
+  --text-heading: #3c4257; // #1A1F35; // h1,h2,etc. text dark
+  --text-subheading: #4e576a;
+  --text-placeholder: #464c61; // for inputs
+  --text-dim: #697386; // for tags
+  --text-link: var(--text); // #5469D4;
+
+  // Big Elements
+  --wrapper-width: 750px; // 870px; //750px
+  --wrapper-sidebar-width: 1000px; // 700 for content, 300 for sidebar
+  --modal-width: var(--wrapper-width);
+  --main-bg: #faf4e9; //#F8ECDB; // #faf4e9 #f5e4cd
+  --decoration-line: 2px solid #ff6600;
+  --header-bg: white; //#fff7e8; //white;
+  --subnav-bg: #fafaf9;
+  --sidebar-bg: white;
+  --active-bg: #fafafa;
+  --quote-bg: #fcf2ef; // #fafafa;
+  --quote-border: #ff6600;
+  --panel-bg: #e0e6ef;
+  --tag-bg: #e0e6ef;
+  --code-bg: #eeecef; //mix(var(--quote-bg), var(--panel-bg), 50%); // #f5f5f5;
+  --post-bg: white;
+  --post-footer-bg: #fafafa;
+  --modal-bg: white;
+  --footer-bg: #1a202a;
+
+  // Small Elements
+  --btn-bg: white;
+  --btn-bg-hover: #eee;
+  --btn-cta: #ff6600; //#DA552F;// #1977f2; //Facebook Blue
+  --border: #e3e8ee; //#464c61;
+  --border-dim: #f6f7f8;
+  --border-radius: 6px;
+  --input-bg: white; //#262c3b; // lighter in header
+  --input-border: var(--border);
+  --input-bg-subnav: white;
+  --input-border-subnav: var(--border);
+  --scrollbar-thumb: rgba(110, 110, 110, 0.2);
+  // Colors
+  --orange: #da552f;
+  --blue: #478dc0;
+  --box-shadow: 0 0 2px 0px rgb(0 0 0 / 20%);
+}
