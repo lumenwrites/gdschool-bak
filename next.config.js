@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // Removes double rerender https://github.com/vercel/next.js/issues/35822
+  // Which is happening only in dev mode.
+  reactStrictMode: false,
 }
 
 module.exports = nextConfig
