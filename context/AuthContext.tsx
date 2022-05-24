@@ -23,7 +23,7 @@ export default function Provider({ children }) {
   useEffect(() => {
     async function getUserProfile() {
       const { data: profile } = await supabaseClient
-        .from('profile')
+        .from('profiles')
         .select('*')
         .eq('id', helpersUser.id)
         .single()
