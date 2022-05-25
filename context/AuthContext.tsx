@@ -34,7 +34,11 @@ export default function Provider({ children }) {
     }
     // Only fetch profile info once user is logged in.
     if (helpersUser) getUserProfile()
-  }, [helpersUser])
+    if (error) {
+      console.log('[AuthContext] Login error', error)
+      setIsLoading(false)
+    }
+  }, [helpersUser, error])
 
   async function login() {
     const { user, session, error } = await supabaseClient.auth.signIn({

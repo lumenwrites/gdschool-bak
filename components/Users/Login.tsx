@@ -2,7 +2,6 @@ import { useAuth } from 'context/AuthContext'
 
 export default function Login() {
   const { user, login, logout, isLoading } = useAuth()
-
   if (isLoading) return null
   return (
     <>
