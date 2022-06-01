@@ -13,6 +13,6 @@ import prisma from 'prisma/prismaClient'
 
 export async function getServerSideProps() {
   const profiles = await prisma.profile.findMany()
-  console.log(profiles)
+  console.log("Fetching profile info", profiles)
   return { props: { } }
 }
