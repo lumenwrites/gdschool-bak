@@ -23,7 +23,7 @@ export default function Provider({ children }) {
   useEffect(() => {
     async function getUserProfile() {
       const { data: profile } = await supabaseClient
-        .from('profiles')
+        .from('Profile')
         .select('*')
         .eq('id', helpersUser.id)
         .single()
@@ -33,7 +33,9 @@ export default function Provider({ children }) {
       setIsLoading(false)
     }
     // Only fetch profile info once user is logged in.
-    if (helpersUser) getUserProfile()
+    if (helpersUser) {
+      getUserProfile()
+    }
     if (error) {
       console.log('[AuthContext] Login error', error)
       setIsLoading(false)

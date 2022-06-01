@@ -6,9 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:pull": "prisma db pull",
+    "prisma:migrate": "prisma migrate dev --schema ./prisma/schema.prisma",
+    "prisma:push": "prisma db push --schema ./prisma/schema.prisma",
+    "prisma:deploy": "prisma migrate deploy --schema ./prisma/schema.prisma",
+    "prisma:reset": "prisma migrate reset --schema ./prisma/schema.prisma",
+    "prisma:generate": "prisma generate --schema ./prisma/schema.prisma",
+    "prisma:seed": "npx prisma db seed "
   },
   "dependencies": {
+    "@prisma/client": "3.14.0",
     "@supabase/supabase-auth-helpers": "^1.4.2",
     "@supabase/supabase-js": "^1.35.3",
     "axios": "^0.27.2",
@@ -23,6 +31,7 @@
     "@types/react-dom": "18.0.5",
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
+    "prisma": "^3.14.0",
     "typescript": "4.6.4"
   }
 }
