@@ -10,9 +10,11 @@ export default function Home({ lessons }) {
 }
 
 import prisma from 'prisma/prismaClient'
+import courses from 'backend/json/courses/courses.json'
 
 export async function getServerSideProps() {
   const profiles = await prisma.profile.findMany()
-  console.log("Fetching profile info", profiles)
+  // console.log("Fetching profile info", profiles)
+  console.log("Generated courses", courses);
   return { props: { } }
 }

@@ -13,10 +13,11 @@ export async function processCourses() {
     if (!lstatSync(courseDirPath).isDirectory()) continue // ignore .DS_Store
     console.log('Processing course:', courseDirName)
     console.log('[processCourses] Success! Markdown courses converted to json.')
-    const course = {
-      folder: courseDirName,
+    let courses = {}
+    courses[courseDirName]  = {
+      folder: courseDirName
     }
-    saveJson(`${jsonDir}/${courseDirName}.json`, course)
+    saveJson(`${jsonDir}/courses.json`, courses)
   }
 }
 
