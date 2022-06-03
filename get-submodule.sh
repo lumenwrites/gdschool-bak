@@ -3,7 +3,7 @@
 SUBMODULE_GITHUB=github.com/GDQuest/learn-to-code-with-godot
 
 # .gitmodules submodule path
-SUBMODULE_PATH=courses
+SUBMODULE_PATH=courses/learn-to-code-with-godot
 
 # github access token is necessary
 # add it to Environment Variables on Vercel
