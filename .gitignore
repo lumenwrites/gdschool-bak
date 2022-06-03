@@ -36,4 +36,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 # premium content
-/backend/json/courses
+/backend/json/courses/courses.json
