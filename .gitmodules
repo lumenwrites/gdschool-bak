@@ -1,0 +1,3 @@
+[submodule "courses/learn-to-code-with-godot"]
+	path = courses/learn-to-code-with-godot
+	url = https://github.com/GDQuest/learn-to-code-with-godot
