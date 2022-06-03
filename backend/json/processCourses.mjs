@@ -1,6 +1,6 @@
-import { join } from 'path'
+import { join, dirname } from 'path'
 import { readFileSync, readdirSync, writeFileSync } from 'fs'
-import { lstatSync, existsSync } from 'fs'
+import { lstatSync, existsSync, mkdirSync } from 'fs'
 
 const coursesDir = './courses'
 const jsonDir = join(process.cwd(), './backend/json/courses')
@@ -14,13 +14,21 @@ export async function processCourses() {
     console.log('Processing course:', courseDirName)
     console.log('[processCourses] Success! Markdown courses converted to json.')
     let courses = {}
-    courses[courseDirName]  = {
-      folder: courseDirName
+    courses[courseDirName] = {
+      folder: courseDirName,
     }
     saveJson(`${jsonDir}/courses.json`, courses)
   }
 }
 
+function ensureDirectoryExistence(filePath) {
+  var currentDirName = dirname(filePath)
+  if (existsSync(currentDirName)) return true
+  ensureDirectoryExistence(currentDirName) // check nested dir
+  mkdirSync(currentDirName) // create folder for this one
+}
+
 function saveJson(path, object) {
+  ensureDirectoryExistence(path)
   writeFileSync(path, JSON.stringify(object))
 }
