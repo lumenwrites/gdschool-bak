@@ -17,6 +17,7 @@ export async function renderMDX(text) {
   ]
   const serialized = await serialize(content, {
     mdxOptions: { remarkPlugins, rehypePlugins },
+    scope: frontmatter
   })
   return serialized
 }

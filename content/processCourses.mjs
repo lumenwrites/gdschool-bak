@@ -1,8 +1,8 @@
-import fs from 'fs'
+import fs from 'fs-extra'
 import path from 'path'
 import matter from 'gray-matter'
 import { renderMDX } from './renderMdx.mjs'
-import { saveJson, readText } from './utils.mjs'
+import { saveJson, readText, slugify, ensureDirExists } from './utils.mjs'
 
 const coursesDir = './courses'
 const jsonDir = path.join(process.cwd(), './content/json')
@@ -29,14 +29,14 @@ async function processCourse(courseDirName) {
   const { data: courseFrontmatter } = matter(courseIndexText)
   let course = {
     title: courseFrontmatter.title,
-    slug: courseFrontmatter.slug,
+    slug: courseFrontmatter.slug || slugify(courseFrontmatter.title),
     description: courseFrontmatter.description,
     thumbnail: courseFrontmatter.thumbnail,
-    draft: courseFrontmatter.draft,
-    price: courseFrontmatter.price,
-    tags: courseFrontmatter.tags,
+    draft: courseFrontmatter.draft || false,
+    price: courseFrontmatter.price || 0,
+    tags: courseFrontmatter.tags || [],
     sections: [],
-    toc: []
+    toc: [],
   }
   // Loop through course sections
   for (const sectionDirName of fs.readdirSync(contentDirPath)) {
@@ -45,6 +45,7 @@ async function processCourse(courseDirName) {
   }
   generatePrevNextLinks(course.sections)
   course.toc = generateTOC(course.sections)
+  course.firstChapterUrl = `/course/${course.slug}/${course.toc[0].slug}/${course.toc[0].lessons[0].slug}`
   return course
 }
 
@@ -57,8 +58,8 @@ async function processSection(sectionDirName, contentDirPath, course) {
   const { data: sectionFrontmatter } = matter(sectionIndexText)
   let section = {
     title: sectionFrontmatter.title,
-    slug: sectionFrontmatter.slug,
-    draft: sectionFrontmatter.draft,
+    slug: sectionFrontmatter.slug || slugify(sectionFrontmatter.title),
+    draft: sectionFrontmatter.draft || false,
     lessons: [],
   }
   for (const lessonFilename of fs.readdirSync(sectionDirPath)) {
@@ -72,6 +73,12 @@ async function processSection(sectionDirName, contentDirPath, course) {
   }
   // Don't add section to the course if there are no lessons in it (like if all of them are drafts)
   if (!section.lessons.length) return
+
+  // Copy images
+  const imagesPath = `./public/courses/${course.slug}/${section.slug}/images`
+  ensureDirExists(imagesPath)
+  fs.copy(`${sectionDirPath}/images`, imagesPath)
+  
   return section
 }
 
@@ -87,12 +94,13 @@ async function processLesson(lessonFilename, sectionDirPath, course, section) {
   if (isProd && lessonFrontmatter.draft) return // skip drafts in production
   let lesson = {
     title: lessonFrontmatter.title,
-    slug: lessonFrontmatter.slug,
-    free: lessonFrontmatter.free,
-    draft: lessonFrontmatter.draft,
-    url: `/course/${course.slug}/${section.slug}/${lessonFrontmatter.slug}`, // used in prev-next and TOC
-    // serializedMDX: await renderMDX(lessonText),
+    slug: lessonFrontmatter.slug || slugify(lessonFrontmatter.title),
+    free: lessonFrontmatter.free || false,
+    draft: lessonFrontmatter.draft || false,
+    url: '',
+    serializedMDX: await renderMDX(lessonText),
   }
+  lesson.url = `/course/${course.slug}/${section.slug}/${lessonFrontmatter.slug}` // used in prev-next and TOC
   return lesson
 }
 
