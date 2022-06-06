@@ -13,7 +13,7 @@ export default function Sidebar({ toc }) {
 
 function Section({ section }) {
   return (
-    <div className="section">
+    <div className="Section">
       <div className="section-title">{section.title}</div>
       {section.lessons.map((lesson) => (
         <LessonLink lesson={lesson} section={section} />
@@ -29,7 +29,7 @@ function LessonLink({ lesson, section }) {
   return (
     <Link
       key={lesson.url}
-      className={`lesson ${isActive ? '-active' : ''}`}
+      className={`LessonLink ${isActive ? '-active' : ''}`}
       href={lesson.url}
     >
       {lesson.title}

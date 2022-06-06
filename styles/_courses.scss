@@ -1,0 +1,41 @@
+.CourseLayout {
+  display: flex;
+  height: calc(100% - 60px); // minus header height
+  .Sidebar {
+    flex: 0 0 300px;
+    height: 100%;
+  }
+  .Lesson {
+    flex: 1 0 auto;
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+.Sidebar {
+  padding: var(--size-2);
+}
+
+.Section {
+  > .section-title {
+    padding: var(--size-2);
+    border-radius: var(--radius-lg);
+    cursor: default;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:hover {
+      background-color: var(--slate-300);
+    }
+  }
+}
+
+.LessonLink {
+  display: block;
+  padding: var(--size-2);
+}
+
+.Lesson {
+  padding: var(--size-10);
+  background: white;
+  box-shadow: var(--shadow-md);
+}

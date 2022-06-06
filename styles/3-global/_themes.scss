@@ -17,7 +17,7 @@
   --info: #0dcaf0;
   --warning: #ffc107;
   --danger: #dc3545;
-  --gradient: linear-gradient(45deg, #d31f4d, #fab41e);
+  --gradient-primary: linear-gradient(45deg, #8343E2, #BD50E4); // linear-gradient(45deg, #d31f4d, #fab41e);
 
   // Fonts
   --body-font-family: var(--font-sans);
@@ -68,7 +68,7 @@
   --wrapper-width: 750px; // 870px; //750px
   --wrapper-sidebar-width: 1000px; // 700 for content, 300 for sidebar
   --modal-width: var(--wrapper-width);
-  --main-bg: #faf4e9; //#F8ECDB; // #faf4e9 #f5e4cd
+  --main-bg: var(--slate-50); // #faf4e9; //#F8ECDB; // #faf4e9 #f5e4cd
   --decoration-line: 2px solid #ff6600;
   --header-bg: white; //#fff7e8; //white;
   --subnav-bg: #fafaf9;
