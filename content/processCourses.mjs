@@ -15,7 +15,7 @@ export async function processCourses() {
   for (const courseDirName of fs.readdirSync(coursesDir)) {
     if (!fs.lstatSync(`${coursesDir}/${courseDirName}`).isDirectory()) continue // ignore files, like .DS_Store
     const course = await processCourse(courseDirName)
-    courses[courseDirName] = course
+    courses[course.slug] = course
   }
   // Save courses to a json file
   saveJson(`${jsonDir}/courses.json`, courses)
@@ -45,7 +45,7 @@ async function processCourse(courseDirName) {
   }
   generatePrevNextLinks(course.sections)
   course.toc = generateTOC(course.sections)
-  course.firstChapterUrl = `/course/${course.slug}/${course.toc[0].slug}/${course.toc[0].lessons[0].slug}`
+  course.firstLessonUrl = `/course/${course.slug}/${course.toc[0].slug}/${course.toc[0].lessons[0].slug}`
   return course
 }
 
