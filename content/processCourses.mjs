@@ -36,12 +36,15 @@ async function processCourse(courseDirName) {
     price: courseFrontmatter.price,
     tags: courseFrontmatter.tags,
     sections: [],
+    toc: []
   }
   // Loop through course sections
   for (const sectionDirName of fs.readdirSync(contentDirPath)) {
     let section = await processSection(sectionDirName, contentDirPath, course)
     if (section) course.sections.push(section)
   }
+  generatePrevNextLinks(course.sections)
+  course.toc = generateTOC(course.sections)
   return course
 }
 
@@ -88,7 +91,54 @@ async function processLesson(lessonFilename, sectionDirPath, course, section) {
     free: lessonFrontmatter.free,
     draft: lessonFrontmatter.draft,
     url: `/course/${course.slug}/${section.slug}/${lessonFrontmatter.slug}`, // used in prev-next and TOC
-    serializedMDX: await renderMDX(lessonText),
+    // serializedMDX: await renderMDX(lessonText),
   }
   return lesson
+}
+
+function generatePrevNextLinks(sections) {
+  for (const [sectionIndex, section] of sections.entries()) {
+    for (const [lessonIndex, lesson] of section.lessons.entries()) {
+      let prevLesson = section.lessons[lessonIndex - 1] || null
+      let nextLesson = section.lessons[lessonIndex + 1] || null
+      // Next/prev button between sections
+      // If this is the first lesson, but not the first section
+      if (!prevLesson && sectionIndex > 0) {
+        const prevSection = sections[sectionIndex - 1]
+        prevLesson = prevSection.lessons[prevSection.lessons.length - 1]
+      }
+      // If this is the last lesson, but not the last section
+      if (!nextLesson && sectionIndex < sections.length - 1) {
+        const nextSection = sections[sectionIndex + 1]
+        nextLesson = nextSection.lessons[0]
+      }
+      lesson.prev = null
+      if (prevLesson) {
+        lesson.prev = { title: prevLesson.title, url: prevLesson.url }
+      }
+      lesson.next = null
+      if (nextLesson) {
+        lesson.next = { title: nextLesson.title, url: nextLesson.url }
+      }
+    }
+  }
+}
+
+function generateTOC(sections) {
+  const toc = sections.map((section) => {
+    return {
+      title: section.title,
+      slug: section.slug, //for "key" prop
+      lessons: section.lessons.map((lesson) => {
+        return {
+          title: lesson.title,
+          slug: lesson.slug, // for "active" lesson
+          url: lesson.url,
+          draft: lesson.draft,
+          free: lesson.free, // for "free preview" tag
+        }
+      }),
+    }
+  })
+  return toc
 }
