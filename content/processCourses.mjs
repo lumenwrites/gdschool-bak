@@ -45,6 +45,7 @@ async function processCourse(courseDirName) {
   }
   generatePrevNextLinks(course.sections)
   course.toc = generateTOC(course.sections)
+  course.sections = useSlugsAsKeys(course.sections)
   course.firstLessonUrl = `/course/${course.slug}/${course.toc[0].slug}/${course.toc[0].lessons[0].slug}`
   return course
 }
@@ -78,7 +79,7 @@ async function processSection(sectionDirName, contentDirPath, course) {
   const imagesPath = `./public/courses/${course.slug}/${section.slug}/images`
   ensureDirExists(imagesPath)
   fs.copy(`${sectionDirPath}/images`, imagesPath)
-  
+
   return section
 }
 
@@ -149,4 +150,22 @@ function generateTOC(sections) {
     }
   })
   return toc
+}
+
+function useSlugsAsKeys(sections) {
+  // By default sections and lessons are listed as arrays of objects.
+  // course.sections = [ { section data, lessons: [ { lesson data } ] }]
+  // For convenience, I want them in format like this:
+  // course.sections = { "section-slug": { lessons: { "lesson-slug": ... }} }
+  // I can't do this right away, because generatePrevNextLinks() does need them as arrays
+  const namedSections = {}
+  for (const section of sections) {
+    let lessons = {}
+    for (const lesson of section.lessons) {
+      lessons[lesson.slug] = lesson
+    }
+    section.lessons = lessons
+    namedSections[section.slug] = section
+  }
+  return namedSections
 }

@@ -20,7 +20,7 @@ export async function getServerSideProps({ params, req }) {
   const [courseSlug, sectionSlug, chapterSlug] = params.slug
   const course = courses[courseSlug]
   const { toc, sections } = course
-  const lesson = sections[0].lessons[0]
+  const lesson = sections[sectionSlug].lessons[chapterSlug]
   console.log('[...slug]', courseSlug)
   return { props: { lesson, toc } }
 }
