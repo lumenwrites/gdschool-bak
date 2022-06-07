@@ -1,6 +1,7 @@
 # https://github.com/beeinger/vercel-private-submodule
 # github submodule repo address without https:// prefix
-SUBMODULE_GITHUB=github.com/GDQuest/learn-to-code-with-godot
+# SUBMODULE_GITHUB=github.com/GDQuest/learn-to-code-with-godot
+SUBMODULE_GITHUB=github.com/lumenwrites/learn-to-code-with-godot-test
 
 # .gitmodules submodule path
 SUBMODULE_PATH=courses/learn-to-code-with-godot
