@@ -2,7 +2,7 @@
   display: flex;
   height: calc(100% - 60px); // minus header height
   .Sidebar {
-    flex: 0 0 300px;
+    flex: 0 0 350px;
     height: 100%;
   }
   .Lesson {
@@ -13,25 +13,37 @@
 }
 
 .Sidebar {
-  padding: var(--size-2);
+  padding: var(--size-4) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+  overflow-y: auto;
 }
 
 .Section {
   > .section-title {
-    padding: var(--size-2);
-    border-radius: var(--radius-lg);
-    cursor: default;
+    padding: var(--size-2) var(--size-8);
+    // border-radius: var(--radius-lg);
     text-transform: uppercase;
     font-weight: bold;
+    cursor: default;
     &:hover {
-      background-color: var(--slate-300);
+      background: var(--slate-150);
     }
   }
 }
 
 .LessonLink {
   display: block;
-  padding: var(--size-2);
+  padding: var(--size-2) var(--size-2) var(--size-2) var(--size-8);
+  &.-active {
+    background: #f0ecf9;
+    border-left: 4px solid var(--primary);
+    padding-left: calc(var(--size-8) - 4px);
+  }
+  &:not(.-active):hover {
+    background: var(--slate-150);
+  }
 }
 
 .Lesson {

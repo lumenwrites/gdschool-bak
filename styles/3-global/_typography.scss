@@ -33,43 +33,41 @@
   --text-invert-td-borders: #374151;
   font-size: 1rem;
   line-height: 1.75;
+  line-height: 1.5;
+  // Slate
+  --text-body: #334155;
+  --text-headings: #0f172a;
+  --text-lead: #475569;
+  --text-links: #0f172a;
+  --text-bold: #0f172a;
+  --text-counters: #64748b;
+  --text-bullets: #cbd5e1;
+  --text-hr: #e2e8f0;
+  --text-quotes: #0f172a;
+  --text-quote-borders: #e2e8f0;
+  --text-captions: #64748b;
+  --text-code: #0f172a;
+  --text-pre-code: #e2e8f0;
+  --text-pre-bg: #1e293b;
+  --text-th-borders: #cbd5e1;
+  --text-td-borders: #e2e8f0;
+  --text-invert-body: #cbd5e1;
+  --text-invert-headings: #fff;
+  --text-invert-lead: #94a3b8;
+  --text-invert-links: #fff;
+  --text-invert-bold: #fff;
+  --text-invert-counters: #94a3b8;
+  --text-invert-bullets: #475569;
+  --text-invert-hr: #334155;
+  --text-invert-quotes: #f1f5f9;
+  --text-invert-quote-borders: #334155;
+  --text-invert-captions: #94a3b8;
+  --text-invert-code: #fff;
+  --text-invert-pre-code: #cbd5e1;
+  --text-invert-pre-bg: rgb(0 0 0 / 50%);
+  --text-invert-th-borders: #475569;
+  --text-invert-td-borders: #334155;
 }
-
-.prose-slate {
-  --tw-prose-body: #334155;
-  --tw-prose-headings: #0f172a;
-  --tw-prose-lead: #475569;
-  --tw-prose-links: #0f172a;
-  --tw-prose-bold: #0f172a;
-  --tw-prose-counters: #64748b;
-  --tw-prose-bullets: #cbd5e1;
-  --tw-prose-hr: #e2e8f0;
-  --tw-prose-quotes: #0f172a;
-  --tw-prose-quote-borders: #e2e8f0;
-  --tw-prose-captions: #64748b;
-  --tw-prose-code: #0f172a;
-  --tw-prose-pre-code: #e2e8f0;
-  --tw-prose-pre-bg: #1e293b;
-  --tw-prose-th-borders: #cbd5e1;
-  --tw-prose-td-borders: #e2e8f0;
-  --tw-prose-invert-body: #cbd5e1;
-  --tw-prose-invert-headings: #fff;
-  --tw-prose-invert-lead: #94a3b8;
-  --tw-prose-invert-links: #fff;
-  --tw-prose-invert-bold: #fff;
-  --tw-prose-invert-counters: #94a3b8;
-  --tw-prose-invert-bullets: #475569;
-  --tw-prose-invert-hr: #334155;
-  --tw-prose-invert-quotes: #f1f5f9;
-  --tw-prose-invert-quote-borders: #334155;
-  --tw-prose-invert-captions: #94a3b8;
-  --tw-prose-invert-code: #fff;
-  --tw-prose-invert-pre-code: #cbd5e1;
-  --tw-prose-invert-pre-bg: rgb(0 0 0 / 50%);
-  --tw-prose-invert-th-borders: #475569;
-  --tw-prose-invert-td-borders: #334155;
-}
-
 
 .prose {
   color: var(--text-body);
@@ -160,8 +158,8 @@
     margin-bottom: 0.5em;
   }
 
-  ul > li {
-    padding-left: 0.375em;
+  ul {
+    padding-left: 1em;
   }
 
   ul > li p {

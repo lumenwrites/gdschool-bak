@@ -35,6 +35,7 @@ async function processCourse(courseDirName) {
     draft: courseFrontmatter.draft || false,
     price: courseFrontmatter.price || 0,
     tags: courseFrontmatter.tags || [],
+    dirName: courseDirName, // for image paths
     sections: [],
     toc: [],
   }
@@ -76,7 +77,10 @@ async function processSection(sectionDirName, contentDirPath, course) {
   if (!section.lessons.length) return
 
   // Copy images
-  const imagesPath = `./public/courses/${course.slug}/${section.slug}/images`
+  const imagesPath = `./public/courses/${course.dirName}/${sectionDirName}/images`
+  console.log('Copying images', sectionDirPath)
+  // const imagesPath = `./public/courses/${course.slug}/${section.slug}/images`
+  fs.rmSync(`./public/courses/`, { recursive: true, force: true });
   ensureDirExists(imagesPath)
   fs.copy(`${sectionDirPath}/images`, imagesPath)
 

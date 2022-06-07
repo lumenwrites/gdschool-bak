@@ -8,8 +8,8 @@
 
 .Header {
   background: var(--gradient-primary);
-  padding: var(--size-3); // 12px
+  padding: var(--size-2) var(--size-8);
   > .logo img {
-    height: var(--size-10); // 40px
+    height: var(--size-10);
   }
 }

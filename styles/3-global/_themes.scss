@@ -11,7 +11,7 @@
   --font-secondary: var(--font-sans);
 
   // Colors
-  --primary: #0d6efd;
+  --primary: #B55DFF;
   --secondary: #6c757d;
   --success: #198754;
   --info: #0dcaf0;
@@ -54,7 +54,7 @@
 
 :root {
   // Typography
-  --base-font-size: 14px;
+  --base-font-size: var(--font-scale-0);
   --logo-font: 'Open Sans';
 
   --text: #3c4257; // #582323; //#3c4257;

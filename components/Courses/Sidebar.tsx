@@ -16,7 +16,7 @@ function Section({ section }) {
     <div className="Section">
       <div className="section-title">{section.title}</div>
       {section.lessons.map((lesson) => (
-        <LessonLink lesson={lesson} section={section} />
+        <LessonLink key={lesson.slug} lesson={lesson} section={section} />
       ))}
     </div>
   )
